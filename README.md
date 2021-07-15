@@ -1,4 +1,4 @@
-# Sakila Reporting
+# Reporting Web App
 
 A simple reporting app. It aims to show how to build a reporting tool with Laravel.
 
