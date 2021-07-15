@@ -22,8 +22,8 @@ class StaffSalesByMonthChart extends BaseChart
 
         return Chartisan::build()
             ->labels(['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'])
-            ->dataset('Magasin 1', array_values($data[1]))
-            ->dataset('Magasin 2', array_values($data[2]));
+            ->dataset('Magasin 1', array_values($data[1] ?? []))
+            ->dataset('Magasin 2', array_values($data[2] ?? []));
     }
 
     private function getData(Request $request)

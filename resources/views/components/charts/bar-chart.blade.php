@@ -38,7 +38,7 @@
             .datasets(@json($datasets)),
     });
 
-    window.addEventListener('update-chart', function (event, data) {
+    window.addEventListener(`update-chart-${@json($chart)}`, function (event) {
         var defaultParams = @json($params);
         var queryParams = new URLSearchParams({ ...defaultParams, year: event.detail.year });
 

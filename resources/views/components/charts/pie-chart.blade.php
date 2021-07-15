@@ -1,4 +1,4 @@
-@props(['id', 'title' => '', 'chart', 'height' => '400px', 'colors' => ['#aef', '#eda', '#fcd', '#bfe', '#abc', '#ccb', '#dfd']])
+@props(['id', 'title' => '', 'chart', 'height' => '400px', 'colors' => ['#aef', '#eda', '#fcd', '#bfe', '#abc', '#ccb', '#dfd'], 'params' => []])
 
 <div id="{{ $id }}" style="height: {{ $height }}"></div>
 
@@ -11,7 +11,9 @@
 
 @push('after-scripts')
 <script>
-    new Chartisan({
+    var queryParams = new URLSearchParams(@json($params));
+
+    window[@json($id)] = new Chartisan({
         el: '#' + @json($id),
         url: '@chart($chart)',
         loader: {
@@ -34,5 +36,15 @@
             .responsive()
             .legend({ position: 'bottom' })
     });
+
+    window.addEventListener(`update-chart-${@json($chart)}`, function (event) {
+        var defaultParams = @json($params);
+        var queryParams = new URLSearchParams({ ...defaultParams, year: event.detail.year });
+
+        console.log(event.detail.chart)
+        window[event.detail.chart].update({
+            url: '@chart($chart)' + `?${queryParams}`
+        })
+    })
 </script>
 @endpush
