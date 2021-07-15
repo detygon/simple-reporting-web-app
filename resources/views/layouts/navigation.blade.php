@@ -13,7 +13,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Tableau de bord') }}
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('customers_report')" :active="request()->routeIs('customers_report')">
+                        {{ __('Customers Report') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('net_revenue_report')" :active="request()->routeIs('net_revenue_report')">
+                        {{ __('Net Revenue Report') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('products_report')" :active="request()->routeIs('products_report')">
+                        {{ __('Product Report') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('refunds_report')" :active="request()->routeIs('refunds_report')">
+                        {{ __('Refund Report') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -65,6 +77,18 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('customers_report')" :active="request()->routeIs('customers_report')">
+                {{ __('Customers Report') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('net_revenue_report')" :active="request()->routeIs('net_revenue_report')">
+                {{ __('Net Revenue Report') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('products_report')" :active="request()->routeIs('products_report')">
+                {{ __('Product Report') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('refunds_report')" :active="request()->routeIs('refunds_report')">
+                {{ __('Refund Report') }}
             </x-responsive-nav-link>
         </div>
 

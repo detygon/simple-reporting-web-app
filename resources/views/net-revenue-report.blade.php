@@ -1,13 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Net Revenue Reports') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="w-11/12 mx-auto sm:px-6 lg:px-8 grid grid-cols-3 gap-2">
-            <x-count-card title="Total Customers" content="{{ $totalCustomers }}">
+            <x-count-card
+                title="Net Revenue"
+                subtitle="Net revenue (excludes refunds and fees)"
+                content="{{ $netRevenue }}"
+            >
                 @slot('icon')
                     <svg class="h-8 w-8 text-white" viewBox="0 0 28 30" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +37,12 @@
                 @endslot
             </x-count-card>
 
-            <x-count-card title="Total Products" color="green" content="{{ $totalProducts }}">
+            <x-count-card
+                title="Net Orders"
+                subtitle="Net Orders (excludes refunds)"
+                color="green"
+                content="{{ $netOrder }}"
+            >
                 @slot('icon')
                     <svg class="h-8 w-8 text-white" viewBox="0 0 28 28" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +55,12 @@
                 @endslot
             </x-count-card>
 
-            <x-count-card title="Total Orders" color="red" content="{{ $totalOrders }}">
+            <x-count-card
+                title="Average Net Revenue"
+                subtitle="Average net revenue per order"
+                color="red"
+                content="{{ $avgNetRevenue }}"
+            >
                 @slot('icon')
                     <svg class="h-8 w-8 text-white" viewBox="0 0 28 28" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -64,31 +78,17 @@
             </x-count-card>
         </div>
 
-        <div class="w-11/12 mx-auto sm:px-6 lg:px-8 mt-4">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4 shadow">
-                <div class="flex justify-between w-full mb-4">
-                    <p class="text-2xl">Customers Table</p>
-                </div>
-                <livewire:customer.customers-table></livewire:customer.customers-table>
+        <div class="w-11/12 mx-auto sm:px-6 lg:px-8 mt-4 grid grid-cols-2 gap-2">
+            <div>
+                <x-chart-card chart="net_revenue_by_customer_chart" title="Net Revenue By Customer">
+                    <x-bar-chart id="net_revenue_by_customer_chart" chart="net_revenue_by_customer_chart"></x-bar-chart>
+                </x-chart-card>
             </div>
-{{--            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">--}}
-{{--                <x-chart-card chart="top_category_by_revenue_chart" title="Meilleures catégories par revenue">--}}
-{{--                    <x-pie-chart id="top_category_by_revenue_chart" chart="top_category_by_revenue_chart"></x-pie-chart>--}}
-{{--                </x-chart-card>--}}
-{{--            </div>--}}
-{{--            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">--}}
-{{--                <x-chart-card chart="staff_sales_by_year_chart" title="Total des ventes par employés">--}}
-{{--                    <x-bar-chart id="staff_sales_by_year_chart" chart="staff_sales_by_year_chart"></x-bar-chart>--}}
-{{--                </x-chart-card>--}}
-{{--            </div>--}}
+            <div>
+                <x-chart-card chart="net_revenue_by_product_chart" title="Net Revenue By Product">
+                    <x-pie-chart id="net_revenue_by_product_chart" chart="net_revenue_by_product_chart"></x-pie-chart>
+                </x-chart-card>
+            </div>
         </div>
-
-{{--        <div class="w-11/12 mx-auto sm:px-6 lg:px-8 mt-4">--}}
-{{--            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">--}}
-{{--                <x-chart-card chart="staff_sales_by_month_chart" title="Total des ventes par mois">--}}
-{{--                    <x-bar-chart id="staff_sales_by_month_chart" chart="staff_sales_by_month_chart" :datasets="['line', 'line']"></x-bar-chart>--}}
-{{--                </x-chart-card>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
 </x-app-layout>

@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Charts\NetRevenueByCustomerChart;
+use App\Charts\NetRevenueByProductChart;
+use App\Charts\RefundByCustomerChart;
+use App\Charts\RefundByProductChart;
 use ConsoleTVs\Charts\Registrar as Charts;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,9 +29,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Charts $charts)
     {
         $charts->register([
-            \App\Charts\TopCategoryByRevenueChart::class,
-            \App\Charts\StaffSalesByYearChart::class,
-            \App\Charts\StaffSalesByMonthChart::class,
+            NetRevenueByCustomerChart::class,
+            NetRevenueByProductChart::class,
+            RefundByCustomerChart::class,
+            RefundByProductChart::class
         ]);
     }
 }

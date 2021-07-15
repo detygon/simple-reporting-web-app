@@ -6,17 +6,19 @@ use App\Models\Customer;
 use App\Models\Film;
 use App\Models\Rental;
 use App\Models\Staff;
+use App\Services\CustomerService;
+use App\Services\OrderService;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function __invoke()
+    public function __invoke(CustomerService $customerService, OrderService $orderService, ProductService $productService)
     {
         return view('dashboard', [
-            'totalRentals' => Rental::count(),
-            'totalFilms' => Film::count(),
-            'totalStaff' => Staff::count(),
-            'totalCustomers' => Customer::count(),
+            'totalCustomers' => $customerService->count(),
+            'totalProducts' => $productService->count(),
+            'totalOrders' => $orderService->count(),
         ]);
     }
 }
