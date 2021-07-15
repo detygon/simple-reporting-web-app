@@ -1,6 +1,6 @@
 # Sakila Reporting
 
-A simple reporting app for sakila database. It aims to show how to build a reporting tool with Laravel.
+A simple reporting app. It aims to show how to build a reporting tool with Laravel.
 
 ## Learning Laravel
 
@@ -18,7 +18,7 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 ## Prerequisites
 
-The app requires a Sakila Database to work properly. You can find the appropriate files for your DB Server [here](https://github.com/ivanceras/sakila).
+- **PHP 8**
 
 ## Installation
 
@@ -40,12 +40,6 @@ php artisan migrate --seed
 php artisan storage:link
 ```
 
-Then give create an admin user:
-
-```shell
-php artisan voyager:admin your@email.com --create
-```
-
 ## Contributing
 
 Thank you for considering contributing to the application! Please open an issue and make a PR for your requested feature.
@@ -53,3 +47,4 @@ Thank you for considering contributing to the application! Please open an issue 
 ## License
 
 This app is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
